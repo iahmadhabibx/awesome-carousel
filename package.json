@@ -1,11 +1,10 @@
 {
   "name": "awesome-carousel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "main": "lib/index.js",
   "description": "awesome-carousel build with custom props to dynamically amend the package to your needs",
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "babel src --out-dir lib && cp src/index.css lib/",
