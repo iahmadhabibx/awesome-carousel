@@ -2,7 +2,7 @@ import React,{ useRef, useState } from "react";
 import PropTypes from "prop-types";
 import ChevronLeft from "./jsxIcons/ChevronLeft";
 import CarouselItem from "./CarouselItem";
-
+import "./index.css"
 function AwesomeCarousel({
   items,
   itemsGap,
