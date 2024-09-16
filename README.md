@@ -57,7 +57,7 @@ You can customize the carousel by passing various props to the component.
 | `fontSize`      | `string`        | No       | `1rem`  | The font size of the carousel items.           |
 
 ### Use Box Shadows of your choice
-| `none (defaulf)` | `light` | `lightMedium` | `medium` | `mediumStrong` | `darkLight` | `dark` | `darker` | `darkLarge` | `extraDark` | `ultraDark` | `inset` |
+`none (defaulf)` | `light` | `lightMedium` | `medium` | `mediumStrong` | `darkLight` | `dark` | `darker` | `darkLarge` | `extraDark` | `ultraDark` | `inset`
 
 ### Example with Props
 
