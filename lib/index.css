@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+}
+
+.awesome-carousel {
+  position: relative;
+}
+
+.awesome-carousel .awesome__card-wrapper {
+  white-space: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 1rem;
+}
+
+.awesome-carousel .awesome__card {
+  padding: .5rem;
+  text-align: center;
+  scroll-snap-align: start;
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  z-index: 999;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.awesome-carousel .awesome__card:last-child {
+  margin-right: 0;
+}
+
+.awesome-carousel .awesome__card.clicked {
+  animation: clickAimation 200ms;
+}
+
+.awesome-carousel .awesome__chevron {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: #fff;
+  z-index: 9999;
+  transition: all 0.18s cubic-bezier(0.075, 0.82, 0.165, 1);
+  box-shadow: 0 1px 2px rgb(0 0 0/0.08), 0 4px 12px rgb(0 0 0/0.05);
+}
+
+.awesome-carousel .awesome__chevron:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+}
+
+.awesome-carousel .awesome__chevron.right {
+  left: unset;
+  right: 0;
+  transform: translateY(-50%) rotate(180deg) ;
+}
+
+@keyframes clickAimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.925);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
