@@ -55,20 +55,6 @@ You can customize the carousel by passing various props to the component.
 | `itemsGap`      | `string`        | No       | `1rem`  | The gap between carousel items.                |
 | `fontSize`      | `string`        | No       | `1rem`  | The font size of the carousel items.           |
 
-### Use Box Shadows of your choice
-`none (defaulf)`
-`light`
-`lightMedium`
-`medium`
-`mediumStrong`
-`darkLight`
-`dark`
-`darker`
-`darkLarge`
-`extraDark`
-`ultraDark`
-`inset`
-
 ### Example with Props
 
 You can customize the carousel by passing various props to the component.
@@ -126,7 +112,18 @@ The carousel allows scrolling through items by clicking on the chevron buttons o
 
 The `boxShadowType` prop accepts different values based on predefined shadows:
 
-- `"none"`
-- `"small"`
+- `"none (default)"`
+- `"light"`
+- `"lightMedium"`
 - `"medium"`
-- `"large"`
+- `"mediumStrong"`
+- `"darkLight"`
+- `"dark"`
+- `"darker"`
+- `"darkLarge"`
+- `"extraDark"`
+- `"ultraDark"`
+- `"inset"`
+
+## Live Demo
+[Aesome Carousel](https://stackblitz.com/edit/vitejs-vite-wrerhv?file=src%2FApp.jsx&terminal=dev)

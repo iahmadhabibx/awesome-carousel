@@ -1,8 +1,5 @@
-body {
-  margin: 0;
-}
-
 .awesome-carousel {
+  max-width: 100%;
   position: relative;
 }
 
@@ -29,6 +26,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: #222;
 }
 
 .awesome-carousel .awesome__card:last-child {
