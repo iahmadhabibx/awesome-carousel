@@ -1,6 +1,6 @@
 {
   "name": "awesome-carousel",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "lib/index.js",
   "description": "awesome-carousel build with custom props to dynamically amend the package to your needs",
   "scripts": {
