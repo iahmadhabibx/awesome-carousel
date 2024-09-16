@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+Here’s a detailed documentation for your React npm package.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+# Awesome Carousel Component
 
-In the project directory, you can run:
+## Overview
 
-### `yarn start`
+The **Awesome Carousel** is a highly customizable carousel component designed for React applications. It allows you to display an array of items (strings, DOM nodes, or numbers) with custom styles, including shadows, height, width, and radius.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To install the **Awesome Carousel** component, use either `npm` or `yarn`:
 
-### `yarn test`
+### Using npm:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+npm install awesome-carousel
+```
 
-### `yarn build`
+### Using yarn:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+yarn add awesome-carousel
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Step 1: Import the Component
 
-### `yarn eject`
+In your React application, import the `AwesomeCarousel` component:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```jsx
+import React from "react";
+import AwesomeCarousel from "awesome-carousel";
+import "awesome-carousel/dist/index.css";
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Step 2: Using the Component
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+You can use the carousel by passing an array of items (`string`, `DOM node`, or `number`) to the component. Additionally, you can customize various properties like card height, width, radius, and shadows.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Step 3: Customization Options
 
-## Learn More
+You can customize the carousel by passing various props to the component.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Props:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Prop            | Type            | Required | Default | Description                                    |
+| --------------- | --------------- | -------- | ------- | ---------------------------------------------- |
+| `items`         | `arrayOf(node)` | Yes      | -       | The array of items to display in the carousel. |
+| `cardsHeight`   | `string`        | Yes      | -       | Height of each card in the carousel.           |
+| `cardsWidth`    | `string`        | Yes      | -       | Width of each card in the carousel.            |
+| `boxShadowType` | `string`        | No       | `none`  | The type of shadow applied to the cards.       |
+| `cardsRadius`   | `string`        | No       | `0px`   | The border-radius of the cards.                |
+| `itemsGap`      | `string`        | No       | `1rem`  | The gap between carousel items.                |
+| `fontSize`      | `string`        | No       | `1rem`  | The font size of the carousel items.           |
 
-### Code Splitting
+### Use Box Shadows of your choice
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+You can customize the carousel by passing various props to the component.
 
-### Analyzing the Bundle Size
+### Example with Props
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### With String Elements
 
-### Making a Progressive Web App
+```jsx
+<AwesomeCarousel
+  items={["String Item 1", "String Item 2", "String Item 3"]}
+  cardsHeight="200px"
+  cardsWidth="150px"
+  boxShadowType="medium"
+  cardsRadius="10px"
+  itemsGap="20px"
+/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### With Numeric Elements
 
-### Advanced Configuration
+```jsx
+<AwesomeCarousel
+  items={[123, 3.24, 2322]}
+  cardsHeight="200px"
+  cardsWidth="150px"
+  boxShadowType="medium"
+  cardsRadius="10px"
+  itemsGap="20px"
+/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### With DOM Nodes
 
-### Deployment
+```jsx
+<AwesomeCarousel
+  items={[
+    <p>John</p>,
+    <p>Doe</p>,
+    <p>
+      <span>25</span>
+    </p>,
+  ]}
+  cardsHeight="200px"
+  cardsWidth="150px"
+  boxShadowType="medium"
+  cardsRadius="10px"
+  itemsGap="20px"
+/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Step 4: Scroll Behavior
 
-### `yarn build` fails to minify
+The carousel allows scrolling through items by clicking on the chevron buttons on the left and right of the carousel. The scroll position is automatically updated as you navigate through the items.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Box Shadow Types
+
+The `boxShadowType` prop accepts different values based on predefined shadows:
+
+- `"none"`
+- `"small"`
+- `"medium"`
+- `"large"`

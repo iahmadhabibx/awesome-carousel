@@ -34,5 +34,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "awesome-carousel build with custom props to dynamically amend the package to your needs",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iahmadhabibx/awesome-carousel.git"
+  },
+  "keywords": [
+    "awesome-carouse",
+    "reactjs"
+  ],
+  "author": "Ahmad Habib",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iahmadhabibx/awesome-carousel/issues"
+  },
+  "homepage": "https://github.com/iahmadhabibx/awesome-carousel#readme"
 }
