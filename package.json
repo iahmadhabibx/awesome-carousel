@@ -1,6 +1,6 @@
 {
   "name": "awesome-carousel",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "lib/index.js",
   "description": "awesome-carousel build with custom props to dynamically amend the package to your needs",
   "scripts": {
@@ -22,7 +22,6 @@
     "type": "git",
     "url": "git+https://github.com/iahmadhabibx/awesome-carousel.git"
   },
-  
   "keywords": [
     "awesome-carousel",
     "reactjs"
