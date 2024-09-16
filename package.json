@@ -1,23 +1,20 @@
 {
   "name": "awesome-carousel",
   "version": "1.0.4",
-  "private": false,
   "main": "lib/index.js",
   "description": "awesome-carousel build with custom props to dynamically amend the package to your needs",
-  "dependencies": {
-    "@babel/preset-react": "^7.24.7"
-  },
   "scripts": {
-    "start": "react-scripts start",
     "build": "rm -rf lib && babel src --out-dir lib && cp src/index.css lib/",
     "prepublishOnly": "npm run build"
   },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.24.8",
     "@babel/core": "^7.24.8",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-syntax-jsx": "^7.24.7",
     "@babel/preset-env": "^7.24.8",
+    "@babel/preset-react": "^7.24.7",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1"
   },
@@ -25,8 +22,9 @@
     "type": "git",
     "url": "git+https://github.com/iahmadhabibx/awesome-carousel.git"
   },
+  
   "keywords": [
-    "awesome-carouse",
+    "awesome-carousel",
     "reactjs"
   ],
   "author": "Ahmad Habib",
