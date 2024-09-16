@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ChevronLeft from "./jsxIcons/ChevronLeft";
 import CarouselItem from "./CarouselItem";
 
-function App({
+function AwesomeCarousel({
   items,
   itemsGap,
   fontSize,
@@ -65,9 +65,9 @@ function App({
   );
 }
 
-export default App;
+export default AwesomeCarousel;
 
-App.propTypes = {
+AwesomeCarousel.propTypes = {
   items: PropTypes.arrayOf(PropTypes.node).isRequired,
   cardsHeight: PropTypes.string.isRequired,
   cardsWidth: PropTypes.string.isRequired,
@@ -77,7 +77,7 @@ App.propTypes = {
   fontSize: PropTypes.string,
 };
 
-App.defaultProps = {
+AwesomeCarousel.defaultProps = {
   cardsRadius: ".5rem",
   boxShadowType: "none",
   itemsGap: "1rem",
