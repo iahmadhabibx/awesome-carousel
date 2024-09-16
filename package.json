@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "description": "awesome-carousel build with custom props to dynamically amend the package to your needs",
   "scripts": {
-    "build": "rm -rf lib && babel src --out-dir lib && cp src/index.css lib/",
+    "build": "rm -rf lib && babel src --out-dir lib --presets @babel/preset-env,@babel/preset-react",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {},

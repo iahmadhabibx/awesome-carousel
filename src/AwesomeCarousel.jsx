@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React,{ useRef, useState } from "react";
 import PropTypes from "prop-types";
 import ChevronLeft from "./jsxIcons/ChevronLeft";
 import CarouselItem from "./CarouselItem";
