@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { BOX_SHADOWS } from "./constants";
-import "./index.css"
+import "./index.css";
 const CarouselItem = ({
   id,
+  bg,
   item,
   boxShadowType,
   marginRight,
@@ -18,6 +19,7 @@ const CarouselItem = ({
     <div
       className={`awesome__card ${clickedElement === id ? "clicked" : ""}`}
       style={{
+        backgroundColor: bg,
         boxShadow,
         marginRight,
         borderRadius: cardsRadius,

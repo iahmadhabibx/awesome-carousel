@@ -11,6 +11,7 @@ function AwesomeCarousel({
   cardsHeight,
   cardsRadius,
   boxShadowType,
+  cardBackgroundColor
 }) {
   const scrollableRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -55,6 +56,7 @@ function AwesomeCarousel({
             fontSize={fontSize}
             marginRight={itemsGap}
             cardsWidth={cardsWidth}
+            bg={cardBackgroundColor}
             cardsRadius={cardsRadius}
             cardsHeight={cardsHeight}
             boxShadowType={boxShadowType}
@@ -71,6 +73,7 @@ AwesomeCarousel.propTypes = {
   items: PropTypes.arrayOf(PropTypes.node).isRequired,
   cardsHeight: PropTypes.string.isRequired,
   cardsWidth: PropTypes.string.isRequired,
+  cardBackgroundColor: PropTypes.string,
   boxShadowType: PropTypes.string,
   cardsRadius: PropTypes.string,
   itemsGap: PropTypes.string,
@@ -84,4 +87,5 @@ AwesomeCarousel.defaultProps = {
   cardsHeight: "100px",
   cardsWidth: "100px",
   fontSize: "1rem",
+  cardBackgroundColor: "#fff",
 };
