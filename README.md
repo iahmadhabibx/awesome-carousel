@@ -62,6 +62,8 @@ You can customize the carousel by passing various props to the component.
 
 ### Example with Props
 
+`none (defaulf)` | `light` | `lightMedium` | `medium` | `mediumStrong` | `darkLight` | `dark` | `darker` | `darkLarge` | `extraDark` | `ultraDark` | `inset`
+
 #### With String Elements
 
 ```jsx
