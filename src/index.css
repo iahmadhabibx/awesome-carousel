@@ -1,78 +1,121 @@
 .awesome-carousel {
+  --ac-item-gap: 1rem;
+  --ac-bg: #ffffff;
+  --ac-border: rgb(15 23 42 / 0.08);
+  --ac-text: #0f172a;
+  --ac-muted: rgb(15 23 42 / 0.55);
+  --ac-accent: #2563eb;
+  --ac-radius-pill: 999px;
+  --ac-shadow-nav: 0 1px 2px rgb(15 23 42 / 0.06), 0 8px 24px rgb(15 23 42 / 0.08);
+  --ac-shadow-nav-hover: 0 4px 14px rgb(15 23 42 / 0.12);
+
   max-width: 100%;
   position: relative;
+  color: var(--ac-text);
 }
 
 .awesome-carousel .awesome__card-wrapper {
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--ac-item-gap);
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  scrollbar-width: none;
-  padding: 1rem;
+  scroll-padding: 0.5rem 3rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(15 23 42 / 0.2) transparent;
+  padding: 1rem 3.25rem;
+  margin: 0 -0.25rem;
+  outline: none;
+}
+
+.awesome-carousel .awesome__card-wrapper:focus-visible {
+  box-shadow: 0 0 0 2px var(--ac-bg), 0 0 0 4px var(--ac-accent);
+  border-radius: 0.5rem;
+}
+
+.awesome-carousel .awesome__card-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.awesome-carousel .awesome__card-wrapper::-webkit-scrollbar-thumb {
+  background: rgb(15 23 42 / 0.18);
+  border-radius: var(--ac-radius-pill);
 }
 
 .awesome-carousel .awesome__card {
-  padding: .5rem;
+  flex: 0 0 auto;
+  padding: 0.75rem 1rem;
   text-align: center;
   scroll-snap-align: start;
-  font-size: 14px;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  z-index: 999;
-  cursor: pointer;
-  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #222;
+  position: relative;
+  cursor: default;
+  color: inherit;
+  border: 1px solid var(--ac-border);
+  background-clip: padding-box;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.awesome-carousel .awesome__card:last-child {
-  margin-right: 0;
+.awesome-carousel .awesome__card:active {
+  transform: scale(0.98);
 }
 
-.awesome-carousel .awesome__card.clicked {
-  animation: clickAimation 200ms;
+@media (prefers-reduced-motion: reduce) {
+  .awesome-carousel .awesome__card-wrapper {
+    scroll-behavior: auto;
+  }
+
+  .awesome-carousel .awesome__card {
+    transition: none;
+  }
+
+  .awesome-carousel .awesome__chevron {
+    transition: none;
+  }
 }
 
 .awesome-carousel .awesome__chevron {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--ac-border);
+  border-radius: var(--ac-radius-pill);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 0.35rem;
   transform: translateY(-50%);
-  background-color: #fff;
-  z-index: 9999;
-  transition: all 0.18s cubic-bezier(0.075, 0.82, 0.165, 1);
-  box-shadow: 0 1px 2px rgb(0 0 0/0.08), 0 4px 12px rgb(0 0 0/0.05);
+  z-index: 2;
+  color: var(--ac-muted);
+  background: var(--ac-bg);
+  box-shadow: var(--ac-shadow-nav);
+  transition: color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
 .awesome-carousel .awesome__chevron:hover {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+  color: var(--ac-text);
+  box-shadow: var(--ac-shadow-nav-hover);
+  border-color: rgb(15 23 42 / 0.12);
 }
 
-.awesome-carousel .awesome__chevron.right {
-  left: unset;
-  right: 0;
-  transform: translateY(-50%) rotate(180deg) ;
+.awesome-carousel .awesome__chevron:focus-visible {
+  outline: none;
+  box-shadow: var(--ac-shadow-nav-hover), 0 0 0 2px var(--ac-bg), 0 0 0 4px var(--ac-accent);
 }
 
-@keyframes clickAimation {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.925);
-  }
-  100% {
-    transform: scale(1);
-  }
+.awesome-carousel .awesome__chevron--right {
+  left: auto;
+  right: 0.35rem;
+}
+
+.awesome-carousel .awesome__chevron-icon {
+  display: block;
+  flex-shrink: 0;
 }

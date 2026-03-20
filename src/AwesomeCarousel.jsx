@@ -1,60 +1,94 @@
-import React,{ useRef, useState } from "react";
-import PropTypes from "prop-types";
-import ChevronLeft from "./jsxIcons/ChevronLeft";
+import React, { useCallback, useRef, useState } from "react";
 import CarouselItem from "./CarouselItem";
-import "./index.css"
-function AwesomeCarousel({
+import "./index.css";
+
+function ChevronIcon({ flipped }) {
+  return (
+    <svg
+      className="awesome__chevron-icon"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      aria-hidden
+      style={flipped ? { transform: "scaleX(-1)" } : undefined}
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M15.707 4.293a1 1 0 0 1 0 1.414L9.414 12l6.293 6.293a1 1 0 0 1-1.414 1.414l-7-7a1 1 0 0 1 0-1.414l7-7a1 1 0 0 1 1.414 0Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+export default function AwesomeCarousel({
   items,
-  itemsGap,
-  fontSize,
+  itemsGap = "1rem",
+  fontSize = "1rem",
   cardsWidth,
   cardsHeight,
-  cardsRadius,
-  boxShadowType,
-  cardBackgroundColor
+  cardsRadius = "0.75rem",
+  boxShadowType = "none",
+  cardBackgroundColor = "#fff",
 }) {
   const scrollableRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  const carouselItems = items.map((item, i) => ({
-    id: i,
-    item,
-  }));
+  const syncScroll = useCallback(() => {
+    const el = scrollableRef.current;
+    if (el) setScrollPosition(el.scrollLeft);
+  }, []);
 
-  const handleScroll = (type) => {
-    if (scrollableRef.current) {
-      const scrollWidth = scrollableRef.current.scrollWidth;
-      const clientWidth = scrollableRef.current.clientWidth;
-      const maxScroll = scrollWidth - clientWidth;
-      const newPosition =
-        type === "+"
-          ? Math.min(maxScroll, scrollPosition + 100)
-          : Math.max(0, scrollPosition - 100);
-      setScrollPosition(newPosition);
-      scrollableRef.current.scrollLeft = newPosition;
-    }
+  const scrollByDirection = (direction) => {
+    const el = scrollableRef.current;
+    if (!el) return;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    const step = Math.max(120, Math.round(el.clientWidth * 0.85));
+    const next =
+      direction === "next"
+        ? Math.min(maxScroll, scrollPosition + step)
+        : Math.max(0, scrollPosition - step);
+    setScrollPosition(next);
+    el.scrollLeft = next;
   };
 
   return (
-    <aside className="awesome-carousel">
-      <div className={`awesome__chevron`} onClick={() => handleScroll("-")}>
-        <ChevronLeft width={20} height={20} />
-      </div>
-
-      <div
-        className={`awesome__chevron right`}
-        onClick={() => handleScroll("+")}
+    <aside
+      className="awesome-carousel"
+      aria-roledescription="carousel"
+      style={{ "--ac-item-gap": itemsGap }}
+    >
+      <button
+        type="button"
+        className="awesome__chevron"
+        aria-label="Previous items"
+        onClick={() => scrollByDirection("prev")}
       >
-        <ChevronLeft width={20} height={20} />
-      </div>
-      <section className="awesome__card-wrapper" ref={scrollableRef}>
-        {carouselItems.map(({ id, item }) => (
+        <ChevronIcon />
+      </button>
+
+      <button
+        type="button"
+        className="awesome__chevron awesome__chevron--right"
+        aria-label="Next items"
+        onClick={() => scrollByDirection("next")}
+      >
+        <ChevronIcon flipped />
+      </button>
+
+      <section
+        className="awesome__card-wrapper"
+        ref={scrollableRef}
+        onScroll={syncScroll}
+        tabIndex={0}
+        aria-label="Carousel items"
+      >
+        {items.map((item, id) => (
           <CarouselItem
-            id={id}
             key={id}
             item={item}
             fontSize={fontSize}
-            marginRight={itemsGap}
             cardsWidth={cardsWidth}
             bg={cardBackgroundColor}
             cardsRadius={cardsRadius}
@@ -66,26 +100,3 @@ function AwesomeCarousel({
     </aside>
   );
 }
-
-export default AwesomeCarousel;
-
-AwesomeCarousel.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.node).isRequired,
-  cardsHeight: PropTypes.string.isRequired,
-  cardsWidth: PropTypes.string.isRequired,
-  cardBackgroundColor: PropTypes.string,
-  boxShadowType: PropTypes.string,
-  cardsRadius: PropTypes.string,
-  itemsGap: PropTypes.string,
-  fontSize: PropTypes.string,
-};
-
-AwesomeCarousel.defaultProps = {
-  cardsRadius: ".5rem",
-  boxShadowType: "none",
-  itemsGap: "1rem",
-  cardsHeight: "100px",
-  cardsWidth: "100px",
-  fontSize: "1rem",
-  cardBackgroundColor: "#fff",
-};

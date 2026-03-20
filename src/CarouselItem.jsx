@@ -1,49 +1,30 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { BOX_SHADOWS } from "./constants";
-import "./index.css";
-const CarouselItem = ({
-  id,
+
+export default function CarouselItem({
   bg,
   item,
   boxShadowType,
-  marginRight,
   cardsRadius,
   cardsHeight,
   cardsWidth,
-}) => {
+  fontSize,
+}) {
   const boxShadow = BOX_SHADOWS[boxShadowType] || BOX_SHADOWS.none;
-  const [clickedElement, setClickedElement] = useState();
 
   return (
     <div
-      className={`awesome__card ${clickedElement === id ? "clicked" : ""}`}
+      className="awesome__card"
       style={{
         backgroundColor: bg,
         boxShadow,
-        marginRight,
         borderRadius: cardsRadius,
         height: cardsHeight,
         width: cardsWidth,
+        fontSize,
       }}
-      onClick={() => {
-        setClickedElement(id);
-      }}
-      onAnimationEnd={() => setClickedElement("")}
     >
       {item}
     </div>
   );
-};
-
-export default CarouselItem;
-
-CarouselItem.propTypes = {
-  cardsHeight: PropTypes.string.isRequired,
-  cardsWidth: PropTypes.string.isRequired,
-  item: PropTypes.node.isRequired,
-  id: PropTypes.number.isRequired,
-  boxShadowType: PropTypes.string,
-  marginRight: PropTypes.string,
-  fontSize: PropTypes.string,
-};
+}

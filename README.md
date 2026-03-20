@@ -1,129 +1,79 @@
-Here’s a detailed documentation for your React npm package.
+# Awesome Carousel
 
----
+A small, dependency-free React carousel: horizontal scroll with snap, keyboard-focusable track, and accessible prev/next controls.
 
-# Awesome Carousel Component
-
-## Overview
-
-The **Awesome Carousel** is a highly customizable carousel component designed for React applications. It allows you to display an array of items (strings, DOM nodes, or numbers) with custom styles, including shadows, height, width, and radius.
-
-## Installation
-
-To install the **Awesome Carousel** component, use either `npm` or `yarn`:
-
-### Using npm:
+## Install
 
 ```sh
 npm install awesome-carousel
 ```
 
-### Using yarn:
-
-```sh
-yarn add awesome-carousel
-```
+React **16.8+** is required (`peerDependencies`).
 
 ## Usage
 
-### Step 1: Import the Component
-
-In your React application, import the `AwesomeCarousel` component:
+Import the component and its stylesheet (the package [`style`](https://nodejs.org/api/packages.html#style) field points at `lib/index.css` for bundlers that read it):
 
 ```jsx
 import React from "react";
-import AwesomeCarousel from 'awesome-carousel/lib/AwesomeCarousel';
+import AwesomeCarousel from "awesome-carousel";
+import "awesome-carousel/lib/index.css";
+
+export default function App() {
+  return (
+    <AwesomeCarousel
+      items={["One", "Two", "Three"]}
+      cardsHeight="120px"
+      cardsWidth="160px"
+      boxShadowType="medium"
+      cardsRadius="12px"
+      itemsGap="1rem"
+    />
+  );
+}
 ```
 
-### Step 2: Using the Component
+### Props
 
-You can use the carousel by passing an array of items (`string`, `DOM node`, or `number`) to the component. Additionally, you can customize various properties like card height, width, radius, and shadows.
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `items` | `ReactNode[]` | Yes | — | Slides (strings, numbers, or elements). |
+| `cardsHeight` | `string` | Yes | — | Height of each card. |
+| `cardsWidth` | `string` | Yes | — | Width of each card. |
+| `boxShadowType` | `string` | No | `none` | Preset shadow name (see below). |
+| `cardsRadius` | `string` | No | `0.75rem` | Border radius of cards. |
+| `itemsGap` | `string` | No | `1rem` | Gap between cards. |
+| `fontSize` | `string` | No | `1rem` | Font size inside cards. |
+| `cardBackgroundColor` | `string` | No | `#fff` | Card background. |
 
-### Step 3: Customization Options
+### Theming
 
-You can customize the carousel by passing various props to the component.
+Override CSS variables on `.awesome-carousel` (or a parent) to match your UI:
 
-#### Props:
-
-| Prop            | Type            | Required | Default | Description                                    |
-| --------------- | --------------- | -------- | ------- | ---------------------------------------------- |
-| `items`         | `arrayOf(node)` | Yes      | -       | The array of items to display in the carousel. |
-| `cardsHeight`   | `string`        | Yes      | -       | Height of each card in the carousel.           |
-| `cardsWidth`    | `string`        | Yes      | -       | Width of each card in the carousel.            |
-| `boxShadowType` | `string`        | No       | `none`  | The type of shadow applied to the cards.       |
-| `cardsRadius`   | `string`        | No       | `0px`   | The border-radius of the cards.                |
-| `itemsGap`      | `string`        | No       | `1rem`  | The gap between carousel items.                |
-| `fontSize`      | `string`        | No       | `1rem`  | The font size of the carousel items.           |
-
-### Example with Props
-
-You can customize the carousel by passing various props to the component.
-
-#### With String Elements
-
-```jsx
-<AwesomeCarousel
-  items={["String Item 1", "String Item 2", "String Item 3"]}
-  cardsHeight="200px"
-  cardsWidth="150px"
-  boxShadowType="medium"
-  cardsRadius="10px"
-  itemsGap="20px"
-/>
+```css
+.my-carousel.awesome-carousel {
+  --ac-bg: #0f172a;
+  --ac-text: #f8fafc;
+  --ac-muted: rgb(248 250 252 / 0.65);
+  --ac-border: rgb(248 250 252 / 0.12);
+  --ac-accent: #38bdf8;
+}
 ```
 
-#### With Numeric Elements
+### Box shadow presets (`boxShadowType`)
 
-```jsx
-<AwesomeCarousel
-  items={[123, 3.24, 2322]}
-  cardsHeight="200px"
-  cardsWidth="150px"
-  boxShadowType="medium"
-  cardsRadius="10px"
-  itemsGap="20px"
-/>
-```
+`none` (default), `light`, `lightMedium`, `medium`, `mediumStrong`, `darkLight`, `dark`, `darker`, `darkLarge`, `extraDark`, `ultraDark`, `inset`
 
-#### With DOM Nodes
+### Behavior
 
-```jsx
-<AwesomeCarousel
-  items={[
-    <p>John</p>,
-    <p>Doe</p>,
-    <p>
-      <span>25</span>
-    </p>,
-  ]}
-  cardsHeight="200px"
-  cardsWidth="150px"
-  boxShadowType="medium"
-  cardsRadius="10px"
-  itemsGap="20px"
-/>
-```
+- Chevron buttons scroll by ~85% of the visible width (minimum ~120px).
+- The track is focusable; use keyboard after focusing it where supported.
+- `prefers-reduced-motion: reduce` turns off smooth scrolling and short transitions.
 
-## Step 4: Scroll Behavior
+## Demo
 
-The carousel allows scrolling through items by clicking on the chevron buttons on the left and right of the carousel. The scroll position is automatically updated as you navigate through the items.
+[StackBlitz demo](https://stackblitz.com/edit/vitejs-vite-wrerhv?file=src%2FApp.jsx&terminal=dev)
 
-## Box Shadow Types
+## License
 
-The `boxShadowType` prop accepts different values based on predefined shadows:
-
-- `"none (default)"`
-- `"light"`
-- `"lightMedium"`
-- `"medium"`
-- `"mediumStrong"`
-- `"darkLight"`
-- `"dark"`
-- `"darker"`
-- `"darkLarge"`
-- `"extraDark"`
-- `"ultraDark"`
-- `"inset"`
-
-## Live Demo
-[Aesome Carousel](https://stackblitz.com/edit/vitejs-vite-wrerhv?file=src%2FApp.jsx&terminal=dev)
+ISC
